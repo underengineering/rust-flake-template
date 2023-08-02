@@ -102,12 +102,10 @@
               };
           };
 
-        # Configuration for the non-Rust dependencies
-        buildInputs = with pkgs; [
-          clang_15
-          mold'
-        ];
-        nativeBuildInputs = with pkgs; [rustc cargo pkgconfig];
+        # Packages used by the flake at run-time
+        buildInputs = with pkgs; [];
+        # Build dependencies
+        nativeBuildInputs = with pkgs; [rustc clang_15 mold' cargo pkgconfig];
         buildEnvVars = {
           PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
         };
