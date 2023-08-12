@@ -58,6 +58,8 @@
           paths = [pkgs.mold];
           nativeBuildInputs = [pkgs.makeWrapper];
           suffixSalt = lib.replaceStrings ["-" "."] ["_" "_"] system;
+
+          coreutils_bin = lib.getBin pkgs.coreutils;
           postBuild = ''
             for bin in ${pkgs.mold}/bin/*; do
               rm $out/bin/"$(basename "$bin")"
